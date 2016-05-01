@@ -3,6 +3,34 @@ app
 
 Template for a simple Vaadin application that only requires a Servlet 3.0 container to run.
 
+Content
+==============
+
+Used layout:
+- CssLayout
+- HorizontalLayout
+- VerticalLayout
+- FormLayout 
+
+Used component: 
+- Button
+- Grid
+- Label
+- TextField
+- NativeSelect
+- PopupDateField
+
+Used event: 
+- Button.ClickEvent
+- ShortcutAction.KeyCode
+- FieldEvents.TextChangeEvent
+- SelectionEvent
+
+Used container: 
+- BeanItemContainer
+
+Used databind: 
+- fieldgroup.BeanFieldGroup
 
 Workflow
 ========
@@ -45,10 +73,5 @@ If Vaadin pre-releases are not enabled by default, use the Maven parameter
 
 -------------------------
 
-vaadin sample demo
-used layout: CssLayout, HorizontalLayout, VerticalLayout, FormLayout
-used component: Button, Grid, Label, TextField, NativeSelect, PopupDateField
-used event: Button.ClickEvent, ShortcutAction.KeyCode, FieldEvents.TextChangeEvent, SelectionEvent
-used container: BeanItemContainer
-used databind: fieldgroup.BeanFieldGroup
+
 
