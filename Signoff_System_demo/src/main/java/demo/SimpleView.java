@@ -15,7 +15,8 @@ public class SimpleView extends VerticalLayout implements View {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
-
+		this.removeAllComponents();
+		
 		final TextField name = new TextField();
 		name.setCaption("Type your name here:");
 

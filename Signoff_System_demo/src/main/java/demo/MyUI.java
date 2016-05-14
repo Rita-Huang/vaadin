@@ -19,8 +19,11 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
+import demo.bean.LoginBean;
+import demo.common.SideMenu;
 import demo.data.Constant;
 import demo.data.DemoData;
+import demo.service.LoginFormService;
 
 /**
  *
@@ -31,6 +34,10 @@ public class MyUI extends UI {
 
 	@Autowired
 	private SpringViewProvider viewProvider;
+	
+	@Autowired
+	private LoginFormService loginFormService;;
+	
 
 	private VerticalLayout layout;
 
@@ -41,7 +48,6 @@ public class MyUI extends UI {
 		} else {
 			buildMainView();
 		}
-
 	}
 
 	private void buildLoginView() {
@@ -73,11 +79,17 @@ public class MyUI extends UI {
 		
 		buildHeader(layout);
 		
-
+		SideMenu sideMenu = new SideMenu(loginFormService);
+		
+		VerticalLayout content = new VerticalLayout();
 		HorizontalLayout navBar = new HorizontalLayout();
 		buildNavBar(navBar);
 		Panel viewContainer = new Panel();
-		layout.addComponents(navBar, viewContainer);
+		content.addComponents(navBar, viewContainer);
+		
+		HorizontalLayout body = new HorizontalLayout();
+		layout.addComponent(body);
+		body.addComponents(sideMenu,content);
 
 		Navigator navigator = new Navigator(this, viewContainer);
 		navigator.addProvider(viewProvider);
@@ -102,7 +114,7 @@ public class MyUI extends UI {
 		});
 		
 		if(VaadinSession.getCurrent().getAttribute("loginInfo")!=null){
-			String loginAccount = (String) VaadinSession.getCurrent().getAttribute("loginInfo");
+			String loginAccount = ((LoginBean) VaadinSession.getCurrent().getAttribute("loginInfo")).getAliasName();
 			account.setValue(loginAccount);
 		}
 		
@@ -132,8 +144,17 @@ public class MyUI extends UI {
 		}
 	}
 
-	// @SuppressWarnings("serial")
-	// @WebServlet(urlPatterns = { "/*" }, asyncSupported = true)
-	// public static class DefaultUIServlet extends SpringVaadinServlet {
-	// }
+	public static void setLoginBean(LoginBean loginBean) {
+		if(VaadinSession.getCurrent().getAttribute("loginInfo") != null) {
+			String aliasName = ((LoginBean)VaadinSession.getCurrent().getAttribute("loginInfo")).getAliasName();
+			String compId = ((LoginBean)VaadinSession.getCurrent().getAttribute("loginInfo")).getCompId();
+			String compName = ((LoginBean)VaadinSession.getCurrent().getAttribute("loginInfo")).getCompName();
+			String empNo = ((LoginBean)VaadinSession.getCurrent().getAttribute("loginInfo")).getEmpNo();
+			
+			loginBean.setAliasName(aliasName);
+			loginBean.setCompId(compId);
+			loginBean.setCompName(compName);
+			loginBean.setEmpNo(empNo);
+		}
+	}
 }

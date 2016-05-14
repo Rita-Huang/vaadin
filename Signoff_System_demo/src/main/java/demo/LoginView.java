@@ -11,6 +11,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
+import demo.bean.LoginBean;
 import demo.data.Constant;
 import demo.data.DemoData;
 
@@ -44,7 +45,9 @@ public class LoginView extends Panel implements View{
 			button.addClickListener(new Button.ClickListener() {
 				@Override
 				public void buttonClick(ClickEvent event) {
-					VaadinSession.getCurrent().setAttribute("loginInfo", event.getButton().getCaption());
+					String aliasName =  event.getButton().getCaption();
+					LoginBean loginInfo = new LoginBean(aliasName) ;
+					VaadinSession.getCurrent().setAttribute("loginInfo",loginInfo);
 					if(getUI() != null && (MyUI)getUI() != null) {
 						((MyUI)getUI()).buildMainView();
 					}
