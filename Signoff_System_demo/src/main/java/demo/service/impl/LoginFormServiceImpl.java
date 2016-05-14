@@ -3,13 +3,13 @@ package demo.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vaadin.spring.annotation.SpringComponent;
 
 import demo.bean.LoginBean;
 import demo.bean.MenuBean;
+import demo.data.DemoData;
 import demo.service.LoginFormService;
 
 @Service("loginFormService")
@@ -26,7 +26,17 @@ public class LoginFormServiceImpl implements LoginFormService {
 	public List<MenuBean> getMenuList(LoginBean loginBean) {
 		List<MenuBean> menu = new ArrayList<>();
 		menu.add(new MenuBean("01","功能選單",null,null));
-		menu.add(new MenuBean("02","SimpleView","SimpleView","01"));
+		
+		Integer id = 2;
+		for(int i = 0 ; i< DemoData.viewName.length ; i++){
+			MenuBean bean = new MenuBean();
+			bean.setId(id.toString());
+			bean.setCaption(DemoData.viewCaption[i]);
+			bean.setViewName(DemoData.viewName[i]);
+			bean.setParentId("01");
+			menu.add(bean);
+			id++;
+		}
 		return menu;
 	}
 

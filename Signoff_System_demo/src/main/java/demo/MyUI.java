@@ -80,16 +80,11 @@ public class MyUI extends UI {
 		buildHeader(layout);
 		
 		SideMenu sideMenu = new SideMenu(loginFormService);
-		
-		VerticalLayout content = new VerticalLayout();
-		HorizontalLayout navBar = new HorizontalLayout();
-		buildNavBar(navBar);
 		Panel viewContainer = new Panel();
-		content.addComponents(navBar, viewContainer);
 		
 		HorizontalLayout body = new HorizontalLayout();
 		layout.addComponent(body);
-		body.addComponents(sideMenu,content);
+		body.addComponents(sideMenu,viewContainer);
 
 		Navigator navigator = new Navigator(this, viewContainer);
 		navigator.addProvider(viewProvider);
