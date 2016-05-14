@@ -13,6 +13,7 @@ import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -69,6 +70,9 @@ public class MyUI extends UI {
 	public void buildMainView() {
 		layout = new VerticalLayout();
 		setContent(layout);
+		
+		buildHeader(layout);
+		
 
 		HorizontalLayout navBar = new HorizontalLayout();
 		buildNavBar(navBar);
@@ -79,6 +83,39 @@ public class MyUI extends UI {
 		navigator.addProvider(viewProvider);
 		getUI().getNavigator().navigateTo(DemoData.defaultPage);
 	}
+	
+	private void buildHeader(VerticalLayout layout){
+		HorizontalLayout header = new HorizontalLayout();
+		header.addStyleName(Constant.header);
+		
+		Label account = new Label();
+		account.setValue("unknown user");
+		Button logout = new Button("登出");
+		logout.setStyleName(ValoTheme.BUTTON_BORDERLESS);
+		logout.addClickListener(new Button.ClickListener() {
+			@Override
+			public void buttonClick(ClickEvent event) {
+				getUI().getSession().close();
+				getUI().getPage().setLocation(getLogoutPageLocation());
+				
+			}
+		});
+		
+		if(VaadinSession.getCurrent().getAttribute("loginInfo")!=null){
+			String loginAccount = (String) VaadinSession.getCurrent().getAttribute("loginInfo");
+			account.setValue(loginAccount);
+		}
+		
+		header.addComponents(account,logout);
+		header.setSpacing(true);
+		
+		layout.addComponent(header);
+	
+	}
+	private String getLogoutPageLocation(){
+		return "http://localhost:8080/";
+	}
+	
 
 	@SuppressWarnings("serial")
 	private void buildNavBar(HorizontalLayout navBar) {

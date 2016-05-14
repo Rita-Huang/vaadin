@@ -8,4 +8,16 @@
   @include addons;
   @include mytheme;
 
+
+.v-generated-body > .v-app{
+  display: block;
+  height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 20px;
+    background-color: #ffffff;
+    color: #222;
+  padding: 0px !important;
+  margin: 0px !important;
+  line-height:18px;
+}
 }
