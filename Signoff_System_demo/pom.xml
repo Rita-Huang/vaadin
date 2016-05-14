@@ -17,7 +17,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <start-class>com.rita.Signoff_System_demo.TutorialApplication</start-class>
+        <start-class>demo.TutorialApplication</start-class>
         <java.version>1.8</java.version>
     </properties>
 

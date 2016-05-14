@@ -33,4 +33,51 @@
   @include valo;
 
   // Insert your own theme rules here
+  
+  /*
+   .v-panel-content-widget > .v-verticallayout{
+    width: 100%;
+  }
+  */
+  
+  //panel
+  .v-panel-widget{
+    background: none repeat scroll 0 0 #f9f9f9;
+  clear: both;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+  -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+  border: 1px solid #e0dede;
+  width: 100%;
+  }
+  .v-panel-caption-widget{
+    background-image: -webkit-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+  background-image: -moz-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+  background-image: -ms-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+  background-image: -o-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+  background-image: -linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffdfdfd', endColorstr='#ffeaeaea', GradientType=0 );
+  border-bottom: 1px solid #e0dede;
+  height: 36px;
+  -webkit-border-radius: 3px 3px 0px 0px;
+  -moz-border-radius: 3px 3px 0px 0px;
+  border-radius: 3px 3px 0px 0px;
+  border-bottom: 1px solid #e0dede;
+  }
+  .v-panel-content-widget{
+    padding: 7px;
+  border-bottom: 1px solid #CDCDCD;
+  -webkit-border-radius: 0px 0px 3px 3px;
+  -moz-border-radius: 0px 0px 3px 3px;
+  border-radius: 0px 0px 3px 3px;
+  }
+  
+  .cssLayout_center{
+    background:  #CCEEFF;
+  } 
 }
