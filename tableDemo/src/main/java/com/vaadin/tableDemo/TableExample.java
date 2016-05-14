@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.GregorianCalendar;
@@ -437,6 +438,7 @@ public class TableExample extends CustomComponent  {
             container.addBean(new ComponentBean("There", false));
         }
         table.setContainerDataSource(container);
+       
         
         table.setPageLength(6);
 
@@ -801,6 +803,10 @@ public class TableExample extends CustomComponent  {
         editable.setEditable(true);
         editable.setBuffered(true);
         editable.setContainerDataSource(beans);
+        
+        Collection prodIds = editable.getContainerPropertyIds();
+//        editable.setColumnHeader("energy", "Energy Cus");
+//        editable.setColumnHeader("name", "Name Cus");
         
         // Set all fields as immediate
         editable.setTableFieldFactory(new DefaultFieldFactory() {
